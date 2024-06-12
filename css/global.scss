@@ -1,0 +1,124 @@
+:root {
+  --black: oklch(17.7% 0.105 262.48);
+  --purple: oklch(60% 0.37 294.7);
+  --orange: oklch(60% 0.37 64.65);
+  --yellow: oklch(60% 0.37 109.08);
+  --blue: oklch(60% 0.37 237.06);
+  --black-alpha-50: color-mix(in oklch, var(--black), transparent);
+}
+
+@property --gradient-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+@keyframes spin {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+* {
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul,
+li,
+a {
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  background-color: #1b181b;
+  margin: auto;
+}
+nav {
+  height: 80px;
+  top: 0;
+  background-color: #2b22251e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    display: inline-flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: aliceblue;
+      animation: spin 2s linear infinite;
+      background: linear-gradient(to bottom, var(--black), var(--black))
+          padding-box,
+        conic-gradient(
+            in oklch from var(--gradient-angle),
+            var(--purple),
+            var(--orange),
+            var(--yellow),
+            var(--blue),
+            var(--purple)
+          )
+          border-box;
+      border: 5px solid transparent;
+      border-radius: 20px;
+      position: relative;
+      max-width: 150px;
+      width: 100%;
+      height: 60px;
+      z-index: 10;
+      padding: 10px;
+
+      &::before {
+        border-radius: 15px;
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+      }
+
+      &::after {
+        animation: spin 2s linear infinite;
+        background: conic-gradient(
+          in oklch from var(--gradient-angle),
+          var(--purple),
+          var(--orange),
+          var(--yellow),
+          var(--blue),
+          var(--purple)
+        );
+        border-radius: 15px;
+        content: "";
+        position: absolute;
+        inset: 0;
+        filter: blur(50px);
+        z-index: 1;
+      }
+      &:hover {
+        scale: 1.2;
+      }
+    }
+    h2 {
+      color: #fff;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 10px;
+    ul {
+      gap: 5px;
+      li {
+        text-align: center;
+        max-width: 100px;
+        width: 100%;
+        font-size: 15px;
+        padding: 5px;
+      }
+    }
+  }
+}

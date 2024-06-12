@@ -1,0 +1,181 @@
+@import url(./global.css);
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+@property {
+  --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+}
+:root {
+  --card-height: 55vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.box .left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  height: 70vh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+.box .left .profile-image .card {
+  margin-top: 50px;
+  border-radius: 30%;
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: #333;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+.box .left .profile-image .card:hover {
+  color: #fff;
+  transition: color 1s;
+}
+.box .left .profile-image .card:hover:before {
+  animation: none;
+  opacity: 0;
+}
+.box .left .profile-image .card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+.box .left .profile-image .card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+.box .left .profile-image .card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+.box .left .profile-image a {
+  color: rgb(88, 199, 250);
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+.box .left .profile-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.box .left .social-links {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+.box .left .social-links a {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #3b5998;
+  color: #fff;
+  text-decoration: none;
+}
+.box .left .social-links a:hover {
+  background-color: #2d4373;
+}
+.box .left .social-links a img {
+  width: 50px;
+}
+.box .right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70vh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+.box .right h1 {
+  margin-top: 0;
+}
+.box .right h2 {
+  font-size: 1.2em;
+}
+.box .right p {
+  max-width: 43vw;
+  width: 100%;
+  color: #fff;
+}
+.box .right p::first-letter {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --card-height: 50vh;
+  }
+  .box {
+    flex-direction: column;
+    gap: 250px;
+  }
+  .box .right {
+    display: flex;
+    flex-direction: column;
+    margin-top: -150px;
+  }
+  .box .right p {
+    max-width: 55vw;
+  }
+}/*# sourceMappingURL=style.css.map */

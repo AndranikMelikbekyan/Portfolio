@@ -1,0 +1,69 @@
+$color_1: #333;
+$color_2: #666;
+$font-family_1: sans-serif;
+$background-color_1: #f0f0f0;
+$background-color_2: #fff;
+@import url(./global.css);
+
+body {
+  font-family: $font-family_1;
+  margin: 0;
+  padding: 0;
+  // background-color: $background-color_1;
+}
+.container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 2rem;
+text-align: center;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  padding: 100px;
+
+  h1 {
+    color: $background-color_2;
+    
+    
+  }
+  .up,
+  .down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    .skill-card {
+      background-color: $background-color_2;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100px;
+      height: 100px;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+      p {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: $color_2;
+      }
+    }
+  }
+}
+@media screen and (max-width:768px) {
+  .box{
+    padding: 30px;
+    .up,.down{
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+  }
+}
