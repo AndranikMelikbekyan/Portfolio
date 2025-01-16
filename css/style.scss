@@ -22,12 +22,8 @@ $font-family_9: sans-serif;
     --rotate: 360deg;
   }
 }
-@property {
-  --rotate {
-    syntax: "<angle>";
-    initial-value: 132deg;
-    inherits: false;
-  }
+:root {
+  --rotate: 132deg;
 }
 :root {
   --card-height: 55vh;
